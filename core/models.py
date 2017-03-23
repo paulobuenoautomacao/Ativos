@@ -21,7 +21,7 @@ class Subsidiary(models.Model):
 	code = models.CharField('Código', max_length=4)
 	name = models.CharField('Nome', max_length=100)
 	description	= models.TextField('Descrição', blank=True)
-	company = models.ForeignKey('Company', on_delete=models.CASCADE, verbose_name='Compania')
+	company = models.ForeignKey('Company', on_delete=models.PROTECT, verbose_name='Compania')
 	created	= models.DateTimeField('Criado em', auto_now_add=True)
 	modified = models.DateTimeField('Modificado em', auto_now=True)
 
@@ -38,7 +38,7 @@ class Department(models.Model):
 	code = models.CharField('Código', max_length=2)
 	name = models.CharField('Nome', max_length=100)
 	description	= models.TextField('Descrição', blank=True)
-	subsidiary = models.ForeignKey('Subsidiary', on_delete=models.CASCADE, verbose_name='Unidade')
+	subsidiary = models.ForeignKey('Subsidiary', on_delete=models.PROTECT, verbose_name='Unidade')
 	created	= models.DateTimeField('Criado em', auto_now_add=True)
 	modified = models.DateTimeField('Modificado em', auto_now=True)
 
@@ -55,7 +55,7 @@ class Local(models.Model):
 	code = models.CharField('Código', max_length=5)
 	name = models.CharField('Nome', max_length=100)
 	description	= models.TextField('Descrição', blank=True)
-	department = models.ForeignKey('Department', on_delete=models.CASCADE, verbose_name='Departamento')
+	department = models.ForeignKey('Department', on_delete=models.PROTECT, verbose_name='Departamento')
 	created	= models.DateTimeField('Criado em', auto_now_add=True)
 	modified = models.DateTimeField('Modificado em', auto_now=True)
 
@@ -72,7 +72,7 @@ class Equipment(models.Model):
 	code = models.CharField('Código', max_length=10)
 	name = models.CharField('Nome', max_length=100)
 	description	= models.TextField('Descrição', blank=True)
-	local = models.ForeignKey('Local',  on_delete=models.CASCADE, verbose_name='Local')
+	local = models.ForeignKey('Local',  on_delete=models.PROTECT, verbose_name='Local')
 	created	= models.DateTimeField('Criado em', auto_now_add=True)
 	modified = models.DateTimeField('Modificado em', auto_now=True)
 
@@ -89,7 +89,7 @@ class Employee(models.Model):
 	code = models.CharField('Código', max_length=10)
 	name = models.CharField('Nome', max_length=100)
 	position = models.TextField('Cargo', blank=True)
-	department = models.ForeignKey('Department', on_delete=models.CASCADE, verbose_name='Departamento')
+	department = models.ForeignKey('Department', on_delete=models.PROTECT, verbose_name='Departamento')
 	created	= models.DateTimeField('Criado em', auto_now_add=True)
 	modified = models.DateTimeField('Modificado em', auto_now=True)
 
@@ -105,7 +105,7 @@ class Manufacturer(models.Model):
 
 	name = models.CharField('Nome', max_length=100)
 	description	= models.TextField('Descrição', blank=True)
-	company = models.ForeignKey('Company', on_delete=models.CASCADE, verbose_name='Compania')
+	company = models.ForeignKey('Company', on_delete=models.PROTECT, verbose_name='Compania')
 	created	= models.DateTimeField('Criado em', auto_now_add=True)
 	modified = models.DateTimeField('Modificado em', auto_now=True)
 
